@@ -1,13 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cptsprxqn5b86"]
 
 [ext_resource type="Script" path="res://Objects/grid_object.gd" id="1_1rhj6"]
-[ext_resource type="Texture2D" uid="uid://cm3s4ekfx0xda" path="res://icon.svg" id="2_l3m1u"]
+[ext_resource type="Texture2D" uid="uid://c46pmxvqqrdkr" path="res://Sprites/tree.png" id="2_eey1t"]
 
 [node name="Tree" type="Node2D"]
 script = ExtResource("1_1rhj6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.537255, 0.941176, 0.423529, 1)
+[node name="Tree" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_l3m1u")
+texture = ExtResource("2_eey1t")

@@ -1,17 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpiancq5mgv4j"]
 
 [ext_resource type="Script" path="res://Objects/grid_object.gd" id="1_44ibv"]
-[ext_resource type="Texture2D" uid="uid://cm3s4ekfx0xda" path="res://icon.svg" id="2_7o0kq"]
 [ext_resource type="Script" path="res://Components/pushable_component.gd" id="3_f86s1"]
+[ext_resource type="Texture2D" uid="uid://gnj2art7tanr" path="res://Sprites/rock.png" id="3_vn1fn"]
 
 [node name="Rock" type="Node2D"]
 script = ExtResource("1_44ibv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.411765, 0.4, 0.439216, 1)
-position = Vector2(16, 16)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_7o0kq")
-
 [node name="PushableComponent" type="Node" parent="."]
 script = ExtResource("3_f86s1")
+
+[node name="Rock" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("3_vn1fn")

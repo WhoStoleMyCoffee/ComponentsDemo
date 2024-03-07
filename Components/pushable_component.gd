@@ -38,10 +38,14 @@ func can_push(dir: Vector2i) -> bool:
 
 func push(dir: Vector2i) -> bool:
 	if !can_push(dir):
-		var t = create_tween() .set_trans(Tween.TRANS_SINE) .set_ease(Tween.EASE_OUT)
-		t.tween_property(owner, ^"position", owner.position + Vector2(dir), 0.1)
-		t.tween_property(owner, ^"position", Vector2(owner.grid_pos * GridObject.GRID_SIZE), 0.1)
+		animate_push_fail(dir)
 		return false
 	owner.grid_pos += dir
 	return true
+
+
+func animate_push_fail(dir: Vector2):
+	var t = create_tween() .set_trans(Tween.TRANS_SINE) .set_ease(Tween.EASE_OUT)
+	t.tween_property(owner, ^"position", owner.position + Vector2(dir), 0.1)
+	t.tween_property(owner, ^"position", Vector2(owner.grid_pos * GridObject.GRID_SIZE), 0.1)
 
