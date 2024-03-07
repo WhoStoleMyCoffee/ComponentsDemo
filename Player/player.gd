@@ -3,6 +3,8 @@ class_name Player extends GridObject
 
 var level: Level
 
+@onready var pushable_component = $PushableComponent
+
 
 func _ready():
 	level = get_tree().current_scene as Level
@@ -27,21 +29,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func move(dir: Vector2i) -> void:
-	var target_cell: Vector2i = grid_pos + dir
-	if !level.cellv_exists(target_cell):
-		return
-	
-	var object: GridObject = level.get_cellv(target_cell)
-	# There's something in the way
-	if object != null:
-		# Not pushable
-		if !object.has_component(&"PushableComponent"):
-			return
-		
-		# Can't push
-		var pc = object.get_component(&"PushableComponent") as PushableComponent
-		if !pc.push(dir):
-			return
-	
-	grid_pos = target_cell
+	if pushable_component.can_push(dir):
+		grid_pos += dir
 
