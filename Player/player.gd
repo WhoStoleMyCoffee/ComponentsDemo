@@ -31,5 +31,17 @@ func move(dir: Vector2i) -> void:
 	if !level.cellv_exists(target_cell):
 		return
 	
+	var object: GridObject = level.get_cellv(target_cell)
+	# There's something in the way
+	if object != null:
+		# Not pushable
+		if !object.has_component(&"PushableComponent"):
+			return
+		
+		# Can't push
+		var pc = object.get_component(&"PushableComponent") as PushableComponent
+		if !pc.push(dir):
+			return
+	
 	grid_pos = target_cell
 

@@ -4,6 +4,11 @@ class_name Level extends Node2D
 @onready var tile_map = $TileMap as TileMap
 
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if Input.is_action_just_released("reset"):
+		get_tree().reload_current_scene()
+
+
 ## Warning: may return null
 func get_cellv(pos: Vector2i) -> GridObject:
 	for node in get_tree().get_nodes_in_group(&"GridObjects"):

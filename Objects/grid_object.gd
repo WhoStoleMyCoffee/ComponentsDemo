@@ -19,11 +19,9 @@ func _notification(what: int):
 		grid_pos = (position / 32.0).floor()
 
 
-## TODO
-func get_component():
-	pass
+func get_component(component: StringName) -> Node:
+	return get_meta(component, null)
 
-## TODO
-func has_component():
-	pass
+func has_component(component: StringName) -> bool:
+	return has_meta(component)
 
