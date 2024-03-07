@@ -1,5 +1,8 @@
 class_name PushableComponent extends Node
 
+@export var is_enabled: bool = true
+
+
 func _enter_tree() -> void:
 	# Make `owner` just a shorthand for `get_parent()`
 	owner = get_parent() as GridObject
@@ -10,6 +13,9 @@ func _exit_tree() -> void:
 
 
 func can_push(dir: Vector2i) -> bool:
+	if !is_enabled:
+		return false
+	
 	var target_cell: Vector2i = owner.grid_pos + dir
 	var level = get_tree().current_scene as Level
 	if !level.cellv_exists(target_cell):

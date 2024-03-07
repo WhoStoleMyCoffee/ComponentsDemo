@@ -29,6 +29,19 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func move(dir: Vector2i) -> void:
+	var target_cell: Vector2i = grid_pos + dir
+	
+	# Try to move & push whatever is in front
 	if pushable_component.can_push(dir):
-		grid_pos += dir
+		grid_pos = target_cell
+		return
+	
+	# Hit stuff
+	var object: GridObject = level.get_cellv(target_cell)
+	if object == null:
+		return
+	if !object.has_component(&"HittableComponent"):
+		return
+	
+	object.get_component(&"HittableComponent") .hit(self)
 

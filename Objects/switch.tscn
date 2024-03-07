@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxvrtbh5gku7w"]
+
+[ext_resource type="Script" path="res://Objects/switch.gd" id="1_icfyb"]
+[ext_resource type="Texture2D" uid="uid://cm3s4ekfx0xda" path="res://icon.svg" id="2_owdpc"]
+[ext_resource type="Script" path="res://Components/hittable_component.gd" id="3_tdmsj"]
+
+[node name="Switch" type="Node2D"]
+script = ExtResource("1_icfyb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_owdpc")
+
+[node name="HittableComponent" type="Node" parent="."]
+script = ExtResource("3_tdmsj")
+
+[connection signal="just_hit" from="HittableComponent" to="." method="_on_hittable_component_just_hit"]

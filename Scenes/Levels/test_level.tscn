@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://yh85qb6vaadx"]
+[gd_scene load_steps=7 format=3 uid="uid://yh85qb6vaadx"]
 
 [ext_resource type="PackedScene" uid="uid://br40ys4g11vno" path="res://Scenes/Levels/level.tscn" id="1_u3o2e"]
 [ext_resource type="PackedScene" uid="uid://d13c0p5fwo72p" path="res://Player/player.tscn" id="2_53px2"]
 [ext_resource type="PackedScene" uid="uid://cptsprxqn5b86" path="res://Objects/tree.tscn" id="3_jshd1"]
 [ext_resource type="PackedScene" uid="uid://cpiancq5mgv4j" path="res://Objects/rock.tscn" id="4_npq54"]
+[ext_resource type="PackedScene" uid="uid://dxvrtbh5gku7w" path="res://Objects/switch.tscn" id="5_2jr3q"]
+[ext_resource type="PackedScene" uid="uid://dh2ekt12oel2n" path="res://Objects/crate.tscn" id="6_hmoxr"]
 
 [node name="TestLevel" instance=ExtResource("1_u3o2e")]
 
@@ -12,7 +14,7 @@ mouse_filter = 2
 
 [node name="TileMap" parent="." index="1"]
 modulate = Color(0.211765, 0.156863, 0.305882, 1)
-layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 65538, 1, 0, 65536, 1, 0, 65537, 1, 0, 3, 1, 0, 65539, 1, 0, 65535, 1, 0, 131071, 1, 0, 131070, 1, 0, 65534, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, 131069, 1, 0, 65533, 1, 0, -3, 1, 0, -4, 1, 0, 65532, 1, 0, 131068, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -196605, 1, 0, -196606, 1, 0, -196607, 1, 0, -196608, 1, 0, -131073, 1, 0, -131074, 1, 0, -131075, 1, 0, -131076, 1, 0, -131077, 1, 0, -65541, 1, 0, -5, 1, 0, 65531, 1, 0, 131067, 1, 0, -196604, 1, 0, -131068, 1, 0, -65532, 1, 0, 4, 1, 0, 65540, 1, 0, 131076, 1, 0, 131075, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 196607, 1, 0, 196606, 1, 0, 196605, 1, 0, 196604, 1, 0, 196603, 1, 0)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 65538, 1, 0, 65536, 1, 0, 65537, 1, 0, 3, 1, 0, 65539, 1, 0, 65535, 1, 0, 131071, 1, 0, 131070, 1, 0, 65534, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, 131069, 1, 0, 65533, 1, 0, -3, 1, 0, -4, 1, 0, 65532, 1, 0, 131068, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -196605, 1, 0, -196606, 1, 0, -196607, 1, 0, -196608, 1, 0, -131073, 1, 0, -131074, 1, 0, -131075, 1, 0, -131076, 1, 0, -131077, 1, 0, -65541, 1, 0, -5, 1, 0, 65531, 1, 0, 131067, 1, 0, -196604, 1, 0, -131068, 1, 0, -65532, 1, 0, 4, 1, 0, 65540, 1, 0, 131076, 1, 0, 131075, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 196607, 1, 0, 196606, 1, 0, 196605, 1, 0, 196604, 1, 0, 196603, 1, 0, -196616, 1, 0, -131080, 1, 0, -65544, 1, 0, -8, 1, 0, 65528, 1, 0, 131064, 1, 0, 196600, 1, 0, 262136, 1, 0, -196615, 1, 0, -131079, 1, 0, -65543, 1, 0, -7, 1, 0, 65529, 1, 0, 131065, 1, 0, 196601, 1, 0, 262137, 1, 0, -196614, 1, 0, -131078, 1, 0, -65542, 1, 0, -6, 1, 0, 65530, 1, 0, 131066, 1, 0, 196602, 1, 0, 262138, 1, 0, -196613, 1, 0, 262139, 1, 0, -196612, 1, 0, 262140, 1, 0, -196611, 1, 0, 262141, 1, 0, -196610, 1, 0, 262142, 1, 0, -196609, 1, 0, 262143, 1, 0, -262144, 1, 0, 196608, 1, 0, -262143, 1, 0, 196609, 1, 0, -262142, 1, 0, 196610, 1, 0, -262141, 1, 0, 196611, 1, 0, -262140, 1, 0, 196612, 1, 0, -262139, 1, 0, -196603, 1, 0, -131067, 1, 0, -65531, 1, 0, 5, 1, 0, 65541, 1, 0, 131077, 1, 0, 196613, 1, 0, -262138, 1, 0, -196602, 1, 0, -131066, 1, 0, -65530, 1, 0, 6, 1, 0, 65542, 1, 0, 131078, 1, 0, 196614, 1, 0, -262137, 1, 0, -196601, 1, 0, -131065, 1, 0, -65529, 1, 0, 7, 1, 0, 65543, 1, 0, 131079, 1, 0, 196615, 1, 0)
 
 [node name="Player" parent="Objects" index="0" instance=ExtResource("2_53px2")]
 position = Vector2(32, 0)
@@ -21,12 +23,15 @@ position = Vector2(32, 0)
 position = Vector2(0, -32)
 
 [node name="Tree2" parent="Objects" index="2" instance=ExtResource("3_jshd1")]
-position = Vector2(64, 0)
+position = Vector2(96, 0)
 
 [node name="Rock" parent="Objects" index="3" instance=ExtResource("4_npq54")]
 position = Vector2(-32, 0)
 
-[node name="Rock2" parent="Objects" index="4" instance=ExtResource("4_npq54")]
+[node name="Switch" parent="Objects" index="4" instance=ExtResource("5_2jr3q")]
+position = Vector2(-160, 0)
+
+[node name="Crate" parent="Objects" index="5" instance=ExtResource("6_hmoxr")]
 position = Vector2(-64, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
