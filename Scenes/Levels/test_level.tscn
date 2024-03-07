@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://yh85qb6vaadx"]
+
+[ext_resource type="PackedScene" uid="uid://br40ys4g11vno" path="res://Scenes/Levels/level.tscn" id="1_u3o2e"]
+[ext_resource type="PackedScene" uid="uid://d13c0p5fwo72p" path="res://Player/player.tscn" id="2_53px2"]
+
+[node name="TestLevel" instance=ExtResource("1_u3o2e")]
+
+[node name="BG" parent="BGLayer" index="0"]
+mouse_filter = 2
+
+[node name="TileMap" parent="." index="1"]
+modulate = Color(0.211765, 0.156863, 0.305882, 1)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 65538, 1, 0, 65536, 1, 0, 65537, 1, 0, 3, 1, 0, 65539, 1, 0, 65535, 1, 0, 131071, 1, 0, 131070, 1, 0, 65534, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, 131069, 1, 0, 65533, 1, 0, -3, 1, 0, -4, 1, 0, 65532, 1, 0, 131068, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0)
+
+[node name="Player" parent="Objects" index="0" instance=ExtResource("2_53px2")]
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+zoom = Vector2(2, 2)

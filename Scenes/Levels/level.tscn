@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://br40ys4g11vno"]
+
+[ext_resource type="TileSet" uid="uid://bpwhvukksk6w4" path="res://Tiles/ground_tileset.tres" id="1_ckqtp"]
+[ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_hqm33"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_hqm33")
+
+[node name="BGLayer" type="CanvasLayer" parent="."]
+layer = -99
+
+[node name="BG" type="ColorRect" parent="BGLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0745098, 0.0627451, 0.133333, 1)
+metadata/_edit_lock_ = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_ckqtp")
+format = 2
+
+[node name="Objects" type="Node" parent="."]
