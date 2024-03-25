@@ -8,13 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://dh2ekt12oel2n" path="res://Objects/crate.tscn" id="6_hmoxr"]
 
 [node name="TestLevel" instance=ExtResource("1_u3o2e")]
+editor_description = "I originally thought I'd add more levels, but stopped after this one..."
 
 [node name="BG" parent="BGLayer" index="0"]
 mouse_filter = 2
 
 [node name="TileMap" parent="." index="1"]
+editor_description = "The tiles of this tileset are all white, and the TimeMap is modulated to the right color.
+This is again because I was originally planning on having many levels with different color schemes."
 modulate = Color(0.211765, 0.156863, 0.305882, 1)
 layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 65538, 1, 0, 65536, 1, 0, 65537, 1, 0, 3, 1, 0, 65539, 1, 0, 65535, 1, 0, 131071, 1, 0, 131070, 1, 0, 65534, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, 131069, 1, 0, 65533, 1, 0, -3, 1, 0, -4, 1, 0, 65532, 1, 0, 131068, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -196605, 1, 0, -196606, 1, 0, -196607, 1, 0, -196608, 1, 0, -131073, 1, 0, -65541, 1, 0, -5, 1, 0, 65531, 1, 0, 131067, 1, 0, -196604, 1, 0, -131068, 1, 0, -65532, 1, 0, 4, 1, 0, 65540, 1, 0, 131076, 1, 0, 131075, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 196607, 1, 0, 196606, 1, 0, 196605, 1, 0, 196604, 1, 0, 196603, 1, 0, -131078, 1, 0, -65542, 1, 0, -6, 1, 0, 65530, 1, 0, 131066, 1, 0, 196602, 1, 0, -196603, 1, 0, -131067, 1, 0, -65531, 1, 0, 5, 1, 0, 65541, 1, 0, 131077, 1, 0, -131077, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 1, 0)
+
+[node name="Objects" parent="." index="2"]
+editor_description = "When I started out, I would always make these \"scene objects container\" nodes a Node2D.
+That is a slight mistake, as Node2Ds can be moved around. This has many times led to bugs related to mysterious misalignments or offsets.
+Using a Node instead of a Node2D prevents that, as regular Nodes don't have a `position` property"
 
 [node name="Player" parent="Objects" index="0" instance=ExtResource("2_53px2")]
 position = Vector2(32, 0)

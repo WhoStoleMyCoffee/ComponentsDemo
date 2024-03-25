@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="GridPuzzleDemo"
+config/name="ComponentsDemo"
+config/description="made by Tienne_k :)"
 run/main_scene="res://Scenes/Levels/test_level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"

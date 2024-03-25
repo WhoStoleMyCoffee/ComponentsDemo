@@ -1,5 +1,9 @@
 class_name Player extends GridObject
 
+# Due to some coincidences of similar movement mechanics, the player...
+# is technically pushable (i.e. has a PushableComponent)...
+# According to this implementation, the player is technically pushing themselves to move...
+# Please don't copy this in your own projects, this was a mere coincidence lol
 
 var level: Level
 
@@ -10,38 +14,42 @@ func _ready():
 	level = get_tree().current_scene as Level
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if !(event is InputEventKey):
+func _unhandled_key_input(event: InputEvent):
+	# We only want to register input events when they're pressed
+	# Try seeing what happens if we comment this `guard clause` out!
+	if !event.is_pressed():
 		return
 	
+	# Move
 	var movement_dir: Vector2i = Vector2i.ZERO
-	if Input.is_action_pressed(&"up"):
+	if event.is_action(&"up", true):
 		movement_dir = Vector2i.UP
-	elif Input.is_action_pressed(&"down"):
+	elif event.is_action(&"down", true):
 		movement_dir = Vector2i.DOWN
-	elif Input.is_action_pressed(&"left"):
+	elif event.is_action(&"left", true):
 		movement_dir = Vector2i.LEFT
-	elif Input.is_action_pressed(&"right"):
+	elif event.is_action(&"right", true):
 		movement_dir = Vector2i.RIGHT
 	
 	if movement_dir != Vector2i.ZERO:
 		move(movement_dir)
+		# Tell the scene we handled this input
+		get_viewport().set_input_as_handled()
 
 
+## Tries to move in the direction `dir`
 func move(dir: Vector2i) -> void:
 	var target_cell: Vector2i = grid_pos + dir
 	
-	# Try to move & push whatever is in front
-	if pushable_component.can_push(dir):
-		grid_pos = target_cell
+	if pushable_component.try_push(dir):
 		return
 	
-	pushable_component.animate_push_fail(dir)
-	
-	# Hit stuff
+	# Push failed; try to interact with stuff
 	var object: GridObject = level.get_cellv(target_cell)
+	# `Level::get_cellv()` can return null, let's handle that just in case
 	if object == null:
 		return
+	# Object is not interactable; return
 	if !object.has_component(&"InteractableComponent"):
 		return
 	
