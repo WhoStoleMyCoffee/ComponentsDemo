@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Objects/switch.gd" id="1_icfyb"]
 [ext_resource type="Texture2D" uid="uid://dpsipxb366pba" path="res://Sprites/switch.png" id="3_lsst7"]
-[ext_resource type="Script" path="res://Components/hittable_component.gd" id="3_tdmsj"]
+[ext_resource type="Script" path="res://Components/interactable_component.gd" id="3_tdmsj"]
 
 [node name="Switch" type="Node2D"]
 script = ExtResource("1_icfyb")
@@ -12,7 +12,7 @@ position = Vector2(16, 16)
 texture = ExtResource("3_lsst7")
 hframes = 2
 
-[node name="HittableComponent" type="Node" parent="."]
+[node name="InteractableComponent" type="Node" parent="."]
 script = ExtResource("3_tdmsj")
 
-[connection signal="just_hit" from="HittableComponent" to="." method="_on_hittable_component_just_hit"]
+[connection signal="just_interacted" from="InteractableComponent" to="." method="_on_just_interacted"]

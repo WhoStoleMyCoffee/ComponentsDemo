@@ -42,8 +42,8 @@ func move(dir: Vector2i) -> void:
 	var object: GridObject = level.get_cellv(target_cell)
 	if object == null:
 		return
-	if !object.has_component(&"HittableComponent"):
+	if !object.has_component(&"InteractableComponent"):
 		return
 	
-	object.get_component(&"HittableComponent") .hit(self)
+	object.get_component(&"InteractableComponent") .interact(self)
 
