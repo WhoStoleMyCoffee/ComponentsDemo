@@ -3,6 +3,9 @@ class_name PushableComponent extends Node
 # In case we may want to disable it
 @export var is_enabled: bool = true
 
+# Used in animate_push_fail()
+var tween: Tween = null
+
 
 func _enter_tree() -> void:
 	# This component can only be a chld of GridObjects
@@ -57,10 +60,22 @@ func try_push(dir: Vector2i) -> bool:
 # https://easings.net/
 # by Andrey Sitnik and Ivan Solovev
 func animate_push_fail(dir: Vector2):
+	# Let's *not* interfere with other tweens
+	# If we don't do this, we'll be creating many Tweens stacking on top of each other,
+	#  leading to an unpleasant visual glitch
+	if tween != null and tween.is_running():
+		return
+	
 	const DURATION: float = 0.1
 	
-	var t: Tween = create_tween() .set_trans(Tween.TRANS_SINE) .set_ease(Tween.EASE_OUT)
+	# Get the position from grid_pos
+	# We do this instead of using `owner.position` because `owner.position` might be in
+	#  the middle of an animation (see GridObject.set_grid_pos()), which would lead
+	#  to another visual glitch
+	var pos: Vector2 = Vector2(owner.grid_pos * GridObject.GRID_SIZE)
 	
-	t.tween_property(owner, ^"position", owner.position + Vector2(dir), DURATION)
-	t.tween_property(owner, ^"position", owner.position, DURATION)
+	# Play the animation
+	tween = create_tween() .set_trans(Tween.TRANS_SINE) .set_ease(Tween.EASE_OUT)
+	tween.tween_property(owner, ^"position", pos + Vector2(dir), DURATION)
+	tween.tween_property(owner, ^"position", pos, DURATION)
 
